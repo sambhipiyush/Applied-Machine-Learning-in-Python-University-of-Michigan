@@ -15,12 +15,14 @@
 
 # First, run the following block to set up the variables needed for later sections.
 
-# In[2]:
+# In[58]:
 
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
+# import matplotlib.pyplot as plt
+# %matplotlib notebook
 
 np.random.seed(0)
 n = 15
@@ -34,8 +36,6 @@ X_train, X_test, y_train, y_test = train_test_split(x, y, random_state=0)
 # plotting a scatterplot of the data points
 # in the training and test sets.
 def part1_scatter():
-    import matplotlib.pyplot as plt
-    get_ipython().magic('matplotlib notebook')
     plt.figure()
     plt.scatter(X_train, y_train, label='training data')
     plt.scatter(X_test, y_test, label='test data')
@@ -58,7 +58,7 @@ def part1_scatter():
 # <br>
 # *This function should return a numpy array with shape `(4, 100)`*
 
-# In[12]:
+# In[59]:
 
 def answer_one():
     from sklearn.linear_model import LinearRegression
@@ -90,13 +90,11 @@ def answer_one():
 answer_one()
 
 
-# In[9]:
+# In[60]:
 
 # feel free to use the function plot_one() to replicate the figure 
 # from the prompt once you have completed question one
 def plot_one(degree_predictions):
-    import matplotlib.pyplot as plt
-    get_ipython().magic('matplotlib notebook')
     plt.figure(figsize=(10,5))
     plt.plot(X_train, y_train, 'o', label='training data', markersize=10)
     plt.plot(X_test, y_test, 'o', label='test data', markersize=10)
@@ -114,7 +112,7 @@ def plot_one(degree_predictions):
 # 
 # *This function should return one tuple of numpy arrays `(r2_train, r2_test)`. Both arrays should have shape `(10,)`*
 
-# In[13]:
+# In[61]:
 
 def answer_two():
     from sklearn.linear_model import LinearRegression
@@ -155,12 +153,10 @@ answer_two()
 # 
 # *This function should return one tuple with the degree values in this order: `(Underfitting, Overfitting, Good_Generalization)`. There might be multiple correct solutions, however, you only need to return one possible solution, for example, (1,2,3).* 
 
-# In[16]:
+# In[62]:
 
 def answer_three():
     
-    #import matplotlib.pyplot as plt
-    #%matplotlib notebook
     # Your code here
     #(result_train, result_test) = answer_two()
     #plt.figure(figsize=(10,5))
@@ -183,7 +179,7 @@ answer_three()
 # 
 # *This function should return one tuple `(LinearRegression_R2_test_score, Lasso_R2_test_score)`*
 
-# In[20]:
+# In[63]:
 
 def answer_four():
     from sklearn.preprocessing import PolynomialFeatures
@@ -243,7 +239,7 @@ answer_four()
 # 
 # The data in the mushrooms dataset is currently encoded with strings. These values will need to be encoded to numeric to work with sklearn. We'll use pd.get_dummies to convert the categorical variables into indicator variables. 
 
-# In[22]:
+# In[64]:
 
 import pandas as pd
 import numpy as np
@@ -278,7 +274,7 @@ y_subset = y_test2
 # 
 # *Note: remember that you also need to set random_state in the DecisionTreeClassifier.*
 
-# In[33]:
+# In[65]:
 
 def answer_five():
     from sklearn.tree import DecisionTreeClassifier
@@ -324,7 +320,7 @@ answer_five()
 # 
 # *This function should return one tuple of numpy arrays `(training_scores, test_scores)` where each array in the tuple has shape `(6,)`.*
 
-# In[38]:
+# In[66]:
 
 def answer_six():
     from sklearn.svm import SVC
@@ -352,13 +348,11 @@ answer_six()
 # 
 # *This function should return one tuple with the degree values in this order: `(Underfitting, Overfitting, Good_Generalization)` Please note there is only one correct solution.*
 
-# In[42]:
+# In[67]:
 
 def answer_seven():
     
     # Your code here
-    #import matplotlib.pyplot as plt
-    #%matplotlib notebook
     #train_scores, test_scores = answer_six()
     #plt.figure()
     #plt.plot(np.logspace(-4,1,6),train_scores,'b',label='Training scores')
