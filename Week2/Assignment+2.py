@@ -246,7 +246,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 
 
-mush_df = pd.read_csv('readonly/mushrooms.csv')
+mush_df = pd.read_csv('mushrooms.csv')
 mush_df2 = pd.get_dummies(mush_df)
 
 X_mush = mush_df2.iloc[:,2:]
