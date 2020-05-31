@@ -74,8 +74,8 @@ F1-score = 2 * ( (Precision * Recall) / (Precision + Recall) ) = ( 2 * TP ) / ( 
 Fβ = (1 + β^2) * ( (Precision * Recall) / ( (β^2 * Precision) + Recall) ) = ( (1 + β^2) * TP ) / ( (1 + β^2) * TP + β * FN + FP )
 
 β allows adjustment of the metric to control the emphasis on recall vs precision
-	- Precision-oriented users: β = 0.5 ( as we want FP to hurt performance more than FN )
-	- Recall-oriented users: β = 2 ( as we want FN to hurt performance more than FP )
+	- Precision-oriented users: β = 0.5 ( as we want FP to hurt performance more than FN and tries to increase TP )
+	- Recall-oriented users: β = 2 ( as we want FN to hurt performance more than FP and tries to increase TP )
 	- Precision-Recall weighed equally when:  β = 1 ( F1 score special case that we just saw that weights precision and recall equally )
 
 
