@@ -13,13 +13,13 @@ The leakage came from three sources:
 3. The chronological order of the clips (ordered using the full timestamp)
  
 
-###File Sizes
+### File Sizes
 
 After downloading the data and typing a simple “ls -lS”, I noticed that a large number of  audio clip files had both the same size and the same label (i.e. whale vs no-whale).  Interestingly, fIles with the same size were not duplicates (their md5sums differed).  This seemed fishy.
 
 To  investigate further, I made histograms of the file sizes, broken down by label.  Audio files with whale upcalls turned out to have a very specific set of file sizes (see this “comb-like” histogram  where some files are multiples of 148 bytes plus a constant).  In contrast, files without whale upcalls had sizes that looked  much more evenly distributed (see this histogram). Thus, certain file sizes provided a strong indication that a clip had a whale upcall in it.   Also, files with whale upcalls were larger, on average.  
 
-###Millisecond timestamps
+### Millisecond timestamps
 
 Another anomaly was related to the timestamps embedded in the filenames.  If a whale upcall was not in a file, the millisecond field in the timestamp was almost always a multiple of 10 ms  (see this). However, if a whale upcall was in a file, the millisecond field seemed evenly distributed in time - i.e. multiples of 1 ms (see this).  Thus, a zero in the last digit of the millisecond field was strongly predictive; using a simple test for zero as a binary feature yielded a 0.945 AUC by itself.
 
@@ -27,11 +27,11 @@ Next, additional histograms of the millisecond timestamps showed that the audio 
 
 Putting these observations together, it seems like the audio clips with upcalls were processed in a different way than those without upcalls.  As a competitor, though,  it’s impossible to tell what the true root causes of these differences were, or if they could be useful.
 
-###Clip order
+### Clip order
 
 in the first Whale Detection challenge, the (chronological) ordering of the clips contained information. The same was true in this contest.  A moving average of clip labels in the training set showed a familiar pattern: minutes or hours of high whale-call activity, followed by equally lengthy lulls  (see this).  A moving average could be used to capture some of this serial correlation in the leaked test clip labels, providing a “temporally local” probability of a whale upcall.
 
-###Features
+### Features
 
 To take advantage of all these observations,  I created the following features:
 
@@ -43,7 +43,7 @@ To take advantage of all these observations,  I created the following features:
 
 A logistic regression using these simple features yielded 0.9973 AUC on the leaderboard.  I used the ‘glmnet’ package in R for logistic regression, and python to create the features.
 
-###Fixes
+### Fixes
 
 Cornell corrected these anomalies by:
 
